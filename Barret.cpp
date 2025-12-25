@@ -1,4 +1,3 @@
-#pragma GCC optimize("O3")
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -19,6 +18,7 @@ FILE *p;
 static int mul_ans[256][256];//store multiply answer
 int kksk,cnt;
 big_binary for_qp,mol_one,mol_two,Barret_b;
+clock_t begin,end; 
 const int lighter[53]={3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251};
 //small prime list 
 
@@ -344,7 +344,8 @@ void makeit(){//make a random number
 	return;
 }
 
-int main(){
+void prime_generation(){
+	begin=clock();
 	p=fopen("answer.txt","w"); 
 	srand((unsigned)time(NULL));
 	preset();//预处理 
@@ -355,5 +356,11 @@ int main(){
 	}
 	fprintf(p,"The answer:\n");//print the answer
 	outprint(&answer);
+	end=clock();
+	fprintf(p,"总计用时：%.3lf ms\n总计尝试次数：%d\n",(double)(end-begin),cnt);
+	fclose(p);
+} 
+int main(){
+	prime_generation();
 	return 0;
 }
