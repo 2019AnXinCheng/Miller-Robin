@@ -1,3 +1,4 @@
+#pragma GCC optimize(2)
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -357,7 +358,7 @@ void prime_generation(){
 	fprintf(p,"The answer:\n");//print the answer
 	outprint(&answer);
 	end=clock();
-	fprintf(p,"总计用时：%.3lf ms\n总计尝试次数：%d\n",(double)(end-begin),cnt);
+	fprintf(p,"总计用时：%.0lf ms\n总计尝试次数：%d\n",(double)(end-begin),cnt);
 	fclose(p);
 } 
 int main(){
